@@ -30,7 +30,7 @@ class App extends Component {
                             <a href="/" id="navbar-brand" className="navbar-brand">
                                 <img
                                     className="logo"
-                                    src="../images/logo1.png"
+                                    src="/images/logo1.png"
                                     alt="logo"/>
                             </a>
                         </div>

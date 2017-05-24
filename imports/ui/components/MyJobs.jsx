@@ -3,12 +3,12 @@
  */
 import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import Job from './Job.jsx';
 import {Jobs} from '../../api/jobs.js';
 import Modal from 'react-modal';
+import CountrySelect from "react-country-select";
 
 const customStyles = {
     content: {
@@ -39,7 +39,13 @@ class MyJobs extends Component {
             country: '',
             pay: '',
             currency: '',
+
         };
+        this.onSelect = this.onSelect.bind(this);
+    }
+
+    onSelect(val) {
+        this.setState({country: val});
     }
 
     insertJob() {
@@ -69,67 +75,66 @@ class MyJobs extends Component {
                         <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal.bind(this)}
                                contentLabel="Register"
                                shouldCloseOnOverlayClick={true} style={customStyles}>
-                            <div className="text-center">
-                                <h3>Add Job</h3>
-                            </div>
-                            <h5> Name </h5>
-                            <div>
-                                <input id="sinput" type="text" value={this.state.name} placeholder="Name" required
-                                       onChange={(event) => {
-                                           this.setState({name: event.target.value})
-                                       }}/>
-                            </div>
-                            <h5> Description </h5>
-                            <div>
+                            <form onSubmit={this.insertJob.bind(this)}>
+                                <div className="text-center">
+                                    <h3>Add Job</h3>
+                                </div>
+                                <h5> Name </h5>
+                                <div>
+                                    <input id="sinput" type="text" value={this.state.name} placeholder="Name" required
+                                           onChange={(event) => {
+                                               this.setState({name: event.target.value})
+                                           }}/>
+                                </div>
+                                <h5> Description </h5>
+                                <div>
                             <textarea id="sinput" type="text" value={this.state.description} placeholder="Description"
                                       required onChange={(event) => {
                                 this.setState({description: event.target.value})
                             }}></textarea>
-                            </div>
-                            <h5> Country </h5>
-                            <div>
-                                <input id="sinput" type="email" value={this.state.country} placeholder="Country"
-                                       required
-                                       onChange={(event) => {
-                                           this.setState({country: event.target.value})
-                                       }}/>
-                            </div>
-                            <h5> City </h5>
-                            <div>
-                                <input id="sinput" type="text" value={this.state.city}
-                                       placeholder="City"
-                                       required onChange={(event) => {
-                                    this.setState({city: event.target.value})
-                                }}/>
-                            </div>
-                            <h5> Pay </h5>
-                            <div>
-                                <input id="sinput" type="text" value={this.state.pay}
-                                       placeholder="Pay"
-                                       required onChange={(event) => {
-                                    this.setState({pay: event.target.value})
-                                }}/>
-                            </div>
-                            <h5> Currency </h5>
-                            <div>
-                                <input id="sinput" type="text" value={this.state.currency}
-                                       placeholder="Currency"
-                                       required onChange={(event) => {
-                                    this.setState({currency: event.target.value})
-                                }}/>
-                            </div>
+                                </div>
+                                <h5> Country </h5>
+                                <div>
+                                    <CountrySelect multi={false} id="sinput" flagImagePath="../flags/"
+                                                   onSelect={this.onSelect} required/>
+                                </div>
+                                <h5> City </h5>
+                                <div>
+                                    <input id="sinput" type="text" value={this.state.city}
+                                           placeholder="City"
+                                           required onChange={(event) => {
+                                        this.setState({city: event.target.value})
+                                    }}/>
+                                </div>
+                                <h5> Pay </h5>
+                                <div>
+                                    <input id="sinput" type="number" value={this.state.pay}
+                                           placeholder="Pay"
+                                           required onChange={(event) => {
+                                        this.setState({pay: event.target.value})
+                                    }}/>
+                                </div>
+                                <h5> Currency </h5>
+                                <div>
+                                    <input id="sinput" type="text" value={this.state.currency}
+                                           placeholder="Currency"
+                                           required onChange={(event) => {
+                                        this.setState({currency: event.target.value})
+                                    }}/>
+                                </div>
 
-                            <div className="row" id="registerButtons">
-                                <div className="col-md-6 text-center">
-                                    <button type="button submit" className="btn btn-lg btn-primary"
-                                            onClick={this.closeModal.bind(this)}>Close
-                                    </button>
+                                <div className="row" id="registerButtons">
+                                    <div className="col-md-6 text-center">
+                                        <button type="button submit" className="btn btn-lg btn-primary"
+                                                onClick={this.closeModal.bind(this)}>Close
+                                        </button>
+                                    </div>
+                                    <div className="col-md-6 text-center">
+                                        <button type="submit" className="btn btn-lg btn-primary">Add
+                                        </button>
+                                    </div>
                                 </div>
-                                <div className="col-md-6 text-center">
-                                    <button onClick={this.insertJob.bind(this)} className="btn btn-lg btn-primary">Add
-                                    </button>
-                                </div>
-                            </div>
+                            </form>
                         </Modal>
                     </div>
                     <div className="col-md-9" id="job-list">
@@ -154,7 +159,8 @@ class MyJobs extends Component {
 
 MyJobs.propTypes = {
     jobs: PropTypes.array,
-    currentUser: PropTypes.object
+    currentUser: PropTypes.object,
+    onSelect: React.PropTypes.func
 };
 
 export default createContainer(() => {

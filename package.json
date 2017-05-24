@@ -6,11 +6,19 @@
   },
   "dependencies": {
     "babel-runtime": "^6.20.0",
+    "css-loader": "^0.28.1",
+    "dropbox": "^2.5.3",
+    "fs": "0.0.1-security",
+    "indexof": "0.0.1",
     "meteor-node-stubs": "~0.2.4",
+    "rc-slider": "^7.0.8",
     "react": "^15.5.4",
     "react-bootstrap-sweetalert": "^3.0.0",
+    "react-country-select": "^1.0.5",
     "react-dom": "^15.5.4",
     "react-modal": "^1.7.7",
-    "react-mounter": "^1.2.0"
+    "react-mounter": "^1.2.0",
+    "react-select": "^1.0.0-rc.4",
+    "style-loader": "^0.17.0"
   }
 }

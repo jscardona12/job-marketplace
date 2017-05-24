@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Modal from 'react-modal';
 import {Accounts} from 'meteor/accounts-base';
 import {Meteor} from 'meteor/meteor';
+import Dropbox from 'dropbox';
+
 
 const customStyles = {
     content: {
@@ -28,6 +30,8 @@ export default class AccountsUIWrapperHome extends Component {
             modalIsOpen: false,
             name: '',
             lastname: '',
+            CV: '',
+            CVLink: '',
             email: '',
             password: '',
             cpassword: '',
@@ -38,19 +42,21 @@ export default class AccountsUIWrapperHome extends Component {
 
     registerUser() {
         if (this.state.password === this.state.cpassword) {
-            console.log(this.state)
             Accounts.createUser({
                 username: this.state.email,
                 password: this.state.password,
-                profile:{
-                    name:this.state.name,
+                profile: {
+                    name: this.state.name,
                     lastname: this.state.lastname,
+                    email: this.state.email,
+                    CV: this.state.CVLink
                 }
             });
-            console.log(Meteor.users.find().fetch());
+            // var fileInput = document.getElementById('file-upload');
+            // Meteor.call('jobs.update',fileInput);
             this.closeModal();
         }
-        else{
+        else {
             console.log("T P A N T S");
             alert("The passwords are not the same");
         }
@@ -75,6 +81,7 @@ export default class AccountsUIWrapperHome extends Component {
                     <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal.bind(this)}
                            contentLabel="Register"
                            shouldCloseOnOverlayClick={true} style={customStyles}>
+                        <form onSubmit={this.registerUser.bind(this)}>
                             <div className="text-center">
                                 <h3>Register</h3>
                             </div>
@@ -108,9 +115,18 @@ export default class AccountsUIWrapperHome extends Component {
                             </div>
                             <h5> Confirm Password </h5>
                             <div>
-                                <input id="sinput" type="password" value={this.state.cpassword} placeholder="Confirm Password"
+                                <input id="sinput" type="password" value={this.state.cpassword}
+                                       placeholder="Confirm Password"
                                        required onChange={(event) => {
                                     this.setState({cpassword: event.target.value})
+                                }}/>
+                            </div>
+                            <h5> Curriculum </h5>
+                            <div>
+
+                                <input id="file-upload" type="file" value={this.state.CV} placeholder="Select your CV"
+                                       required onChange={(event) => {
+                                    this.setState({CV: event.target.value})
                                 }}/>
                             </div>
 
@@ -121,10 +137,11 @@ export default class AccountsUIWrapperHome extends Component {
                                     </button>
                                 </div>
                                 <div className="col-md-6 text-center">
-                                    <button  onClick={this.registerUser.bind(this)} className="btn btn-lg btn-primary">Add
+                                    <button type="submit" className="btn btn-lg btn-primary">Add
                                     </button>
                                 </div>
                             </div>
+                        </form>
                     </Modal>
                     <div className="col-md-3"></div>
                 </div>

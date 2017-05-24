@@ -4,11 +4,12 @@
 .job{
     position: relative;
     width: 100%;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 4px rgba(41,51,57,.5);
+    margin-bottom: 4px;
+    box-shadow: 0 1px 4px rgba(41,51,57,.9);
     color: #37454d;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 2px;
+    margin-top: 0vh;
 }
 .job-container{
     margin-top: 2%;
@@ -16,6 +17,17 @@
 #job-list{
     height:85vh;
     overflow-y: scroll;
+}
+#job-filter{
+    position: relative;
+    width: 100%;
+    margin-bottom: 0px;
+    box-shadow: 0 1px 6px rgba(41,51,57,.9);
+    color: #37454d;
+    background-color: white;
+    border-radius: 2px;
+    margin-top: 0vh;
+    padding: 16px 16px 13px;
 }
 
 #jobImage{
@@ -33,7 +45,7 @@ button.btn-circle {
     border-radius: 100% !important;
     color: #000E0A;
 }
-#buttonAnimal{
+#buttonjob{
     background-color:#043A59;
     margin-left:26%;
     color:#FAF1FB;
@@ -86,8 +98,10 @@ button.btn-circle {
     font-size: 2em;
     border: none;
     color: #000E0A;
-    margin-left:216vh;
+    margin-left: 95%;
     margin-top: 0;
+    position: relative;
+    z-index: 20;
 }
 .panel-info>.panel-heading {
     background-image: linear-gradient(to bottom,#008A91 0,#008A91 100%) !important;
@@ -123,7 +137,7 @@ button.btn-circle {
     position: absolute;
     top: 10px;
     left: -1px;
-    color: #e5e5e5;
+    color: darkgrey;
     background: rgb(0, 0, 0); /* fallback color */
     background: rgba(0, 0, 0, 0.9);
 }
