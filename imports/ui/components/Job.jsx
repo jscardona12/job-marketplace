@@ -41,12 +41,22 @@ class Job extends Component {
                         <img id="jobImage" src="/images/logo1.png" alt="image"/>
                     </div>
                     <div className="col-md-6">
-                        <h3>{this.props.job.name}</h3>
+                        <h2>{this.props.job.name}</h2>
                         <div>
-                            <h4>Country</h4>
-                            <h3>
+
+                            <h4 style={{display: 'inline'}}>Country: </h4>
+                            <h5 style={{display: 'inline'}}>
                                 {this.props.job.country.label}
-                            </h3>
+                            </h5>
+
+                        </div>
+                        <div>
+
+                            <h4 style={{display: 'inline'}}>City: </h4>
+                            <h5 style={{display: 'inline'}}>
+                                {this.props.job.city}
+                            </h5>
+
                         </div>
                         <div>
                             <h4>Description</h4>
@@ -62,7 +72,7 @@ class Job extends Component {
                         {this.props.delete ?
                             (
                                 <div>
-                                    <button onClick={this.getPath.bind(this)} className="btn btn-md btn-primary" >
+                                    <button onClick={this.getPath.bind(this)} className="btn btn-md btn-primary">
                                         Applicants
                                     </button>
                                     <button className="btn btn-md btn-primary" onClick={() => this.deleteJob()}>

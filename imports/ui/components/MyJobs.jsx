@@ -9,6 +9,8 @@ import Job from './Job.jsx';
 import {Jobs} from '../../api/jobs.js';
 import Modal from 'react-modal';
 import CountrySelect from "react-country-select";
+import 'rc-slider/assets/index.css';
+import Slider from 'rc-slider';
 
 const customStyles = {
     content: {
@@ -48,6 +50,9 @@ class MyJobs extends Component {
         this.setState({country: val});
     }
 
+    onSliderChange(value) {
+        this.setState({filterPay: value});
+    }
     insertJob() {
         console.log("Insert A Job");
         Meteor.call('jobs.insert', this.state.name, this.state.description, this.state.city, this.state.country,
@@ -66,12 +71,62 @@ class MyJobs extends Component {
     }
 
     render() {
+        let filteredJobs = this.props.jobs;
+        if (this.state.filterCurrency) {
+            filteredJobs = filteredJobs.filter(job => job.currency.toUpperCase().startsWith(this.state.filterCurrency.toUpperCase()));
+        }
+        if (this.state.filterPay) {
+            filteredJobs = filteredJobs.filter(job => job.pay >= this.state.filterPay);
+        }
+        if (this.state.filterCountry) {
+            filteredJobs = filteredJobs.filter(job => job.country.label === this.state.filterCountry.label);
+        }
+        if (this.state.filterCity) {
+            filteredJobs = filteredJobs.filter(job => job.city.toUpperCase().startsWith(this.state.filterCity.toUpperCase()));
+        }
+        var max = 0;
+        filteredJobs.map(job => {
+            if (max <= parseInt(job.pay)) {
+                max = parseInt(job.pay)
+            }
+
+        })
         if (true) {
             return (
                 <div className="container job-container">
                     <div className="col-md-3">
-                        <button className="btn btn-lg btn-primary btn-circle" onClick={this.openModal.bind(this)}> +
-                        </button>
+                        <div id="job-filter">
+                            <h4>Filter Menu</h4>
+                            <button className="btn btn-sm btn-primary" onClick={this.openModal.bind(this)}> Add Job
+                            </button>
+                        </div>
+
+                        <div id="job-filter">
+                            <h5>Filter by pay</h5>
+                            <h6> Currency</h6>
+                            <input type="text" value={this.state.filterCurrency}
+                                   placeholder="Currency"
+                                   required onChange={(event) => {
+                                this.setState({filterCurrency: event.target.value})
+                            }}/>
+                            <Slider defaultValue={2} min={this.state.min} max={max}
+                                    onChange={this.onSliderChange.bind(this)}
+                            />
+                        </div>
+                        <div id="job-filter">
+                            <h5>Filter by country</h5>
+                            <CountrySelect multi={false} id="sinput" flagImagePath="/flags/"
+                                           onSelect={this.onSelect} required/>
+                        </div>
+                        <div id="job-filter">
+                            <h5>Filter by city</h5>
+                            <input type="text" value={this.state.filterCity}
+                                   placeholder="City"
+                                   required onChange={(event) => {
+                                this.setState({filterCity: event.target.value})
+                            }}/>
+                        </div>
+
                         <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal.bind(this)}
                                contentLabel="Register"
                                shouldCloseOnOverlayClick={true} style={customStyles}>
@@ -95,7 +150,7 @@ class MyJobs extends Component {
                                 </div>
                                 <h5> Country </h5>
                                 <div>
-                                    <CountrySelect multi={false} id="sinput" flagImagePath="../flags/"
+                                    <CountrySelect multi={false} id="sinput" flagImagePath="/flags/"
                                                    onSelect={this.onSelect} required/>
                                 </div>
                                 <h5> City </h5>
@@ -138,7 +193,7 @@ class MyJobs extends Component {
                         </Modal>
                     </div>
                     <div className="col-md-9" id="job-list">
-                        {this.props.jobs.map((job, index) => {
+                        {filteredJobs.map((job, index) => {
                             return <Job key={index} delete={true} job={job}/>
                         })}
                     </div>

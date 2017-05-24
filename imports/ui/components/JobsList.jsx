@@ -10,6 +10,7 @@ import Job from './Job.jsx';
 import {Jobs} from '../../api/jobs.js';
 import 'rc-slider/assets/index.css';
 import Slider from 'rc-slider';
+import CountrySelect from "react-country-select";
 
 
 class JobsList extends Component {
@@ -18,32 +19,24 @@ class JobsList extends Component {
         super(props);
 
         this.state = {
-            filterCurrency: '',
+            filterCurrency: '' ,
             filterPay: null,
-            filterType: null,
             filterCountry: null,
-            filterCity: null,
+            filterCity: '',
         };
 
 
+        this.onSelect = this.onSelect.bind(this);
+    }
+
+    onSelect(val) {
+        this.setState({filterCountry: val});
     }
 
     onSliderChange(value) {
         this.setState({filterPay: value});
     }
 
-    // componentWillUpdate(){
-    //     var m = 0;
-    //     this.props.jobs.map(job =>{
-    //         if( m <= parseInt(job.pay))
-    //         {
-    //             m=parseInt(job.pay)
-    //         }
-    //
-    //     })
-    //     console.log(m);
-    //     this.setState({max:m})
-    // }
 
     render() {
         if (true) {
@@ -51,16 +44,16 @@ class JobsList extends Component {
 
             let filteredJobs = this.props.jobs;
             if (this.state.filterCurrency) {
-                filteredJobs = filteredJobs.filter(job => job.currency.toUpperCase() === this.state.filterCurrency.symbol.toUpperCase());
+                filteredJobs = filteredJobs.filter(job => job.currency.toUpperCase().startsWith(this.state.filterCurrency.toUpperCase()));
             }
             if (this.state.filterPay) {
                 filteredJobs = filteredJobs.filter(job => job.pay >= this.state.filterPay);
             }
             if (this.state.filterCountry) {
-                filteredJobs = filteredJobs.filter(job => job.country === this.state.filterCountry);
+                filteredJobs = filteredJobs.filter(job => job.country.label === this.state.filterCountry.label);
             }
             if (this.state.filterCity) {
-                filteredJobs = filteredJobs.filter(job => job.city.toUpperCase() === this.state.filterCity.toUpperCase());
+                filteredJobs = filteredJobs.filter(job => job.city.toUpperCase().startsWith(this.state.filterCity.toUpperCase()));
             }
             var max = 0;
             filteredJobs.map(job => {
@@ -79,24 +72,27 @@ class JobsList extends Component {
                         <div id="job-filter">
                             <h5>Filter by pay</h5>
                             <h6> Currency</h6>
-                            <input type="text" value={this.state.currency}
+                            <input type="text" value={this.state.filterCurrency}
                                    placeholder="Currency"
                                    required onChange={(event) => {
-                                this.setState({currency: event.target.value})
+                                this.setState({filterCurrency: event.target.value})
                             }}/>
-
                             <Slider defaultValue={2} min={this.state.min} max={max}
                                     onChange={this.onSliderChange.bind(this)}
                             />
                         </div>
                         <div id="job-filter">
-                            <h5>Filter by type</h5>
-                        </div>
-                        <div id="job-filter">
                             <h5>Filter by country</h5>
+                            <CountrySelect multi={false} id="sinput" flagImagePath="/flags/"
+                                           onSelect={this.onSelect} required/>
                         </div>
                         <div id="job-filter">
                             <h5>Filter by city</h5>
+                            <input type="text" value={this.state.filterCity}
+                                   placeholder="City"
+                                   required onChange={(event) => {
+                                this.setState({filterCity: event.target.value})
+                            }}/>
                         </div>
 
                     </div>
