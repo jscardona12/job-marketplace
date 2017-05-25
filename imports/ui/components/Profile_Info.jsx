@@ -26,21 +26,15 @@ export default class Profile_Info extends Component {
                     </div>
 
                     <div className="col-md-6">
-                        <h3>{this.props.profile.name}</h3>
-                        <div>
-                            <h4>Last Name</h4>
-                            <p>
-                                {this.props.profile.lastname}
-                            </p>
-                        </div>
-
+                        <h3>{this.props.profile.name} {this.props.profile.lastname}</h3>
+                        <h4> Email: {this.props.profile.email}</h4>
 
                     </div>
                 </div>
             )
         }
         else {
-            return(<div> </div>)
+            return (<div></div>)
         }
     }
 

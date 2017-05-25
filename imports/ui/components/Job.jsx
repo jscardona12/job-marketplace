@@ -23,8 +23,16 @@ class Job extends Component {
 
     applyJob() {
         var profile = Meteor.user().profile;
-        Meteor.call('jobs.update', this.props.job._id, profile).then();
-        console.log(this.props.job);
+        var profiles = this.props.job.profiles;
+        profiles = profiles.filter(profile => profile.email === profile.email);
+        console.log(profiles);
+        if (profiles[0]) {
+            alert("You already apply for this job")
+        }
+        else {
+            Meteor.call('jobs.update', this.props.job._id, profile);
+            console.log(this.props.job);
+        }
 
     }
 

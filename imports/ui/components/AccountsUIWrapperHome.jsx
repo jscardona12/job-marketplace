@@ -4,7 +4,6 @@ import {Accounts} from 'meteor/accounts-base';
 import {Meteor} from 'meteor/meteor';
 import Dropbox from 'dropbox';
 
-
 const customStyles = {
     content: {
         top: '50%',
@@ -38,10 +37,13 @@ export default class AccountsUIWrapperHome extends Component {
 
         };
 
+        this.up = false;
     }
 
     registerUser() {
         if (this.state.password === this.state.cpassword) {
+            // this.uploadFile();
+            // if(this.up) {
             Accounts.createUser({
                 username: this.state.email,
                 password: this.state.password,
@@ -52,6 +54,8 @@ export default class AccountsUIWrapperHome extends Component {
                     CV: this.state.CVLink
                 }
             });
+            //     this.up = false;
+            // }
             // var fileInput = document.getElementById('file-upload');
             // Meteor.call('jobs.update',fileInput);
             this.closeModal();
@@ -62,6 +66,45 @@ export default class AccountsUIWrapperHome extends Component {
         }
     }
 
+    uploadFile() {
+        console.log("ENTRO");
+        var file = document.getElementById("file-upload").files[0];
+        console.log(file);
+        //
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log('200 OK');
+                }
+                else {
+                    alert('Could not upload file.');
+                }
+            }
+        };
+        xhr.open('POST', 'https://content.dropboxapi.com/2/files/upload');
+        xhr.setRequestHeader('Authorization', 'Bearer ' + process.env.DROPBOX_ACCESS_TOKEN);
+        xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+        xhr.setRequestHeader('Dropbox-API-Arg', '{"path":"/CV}" )');
+
+        xhr.send(file);
+        // $.ajax({
+        //     url: 'https://content.dropboxapi.com/2/files/upload',
+        //     type: 'post',
+        //     data: file.da,
+        //     processData: false,
+        //     contentType: 'application/octet-stream',
+        //     headers: {
+        //         "Authorization": "Bearer"+ process.env.DROPBOX_ACCESS_TOKEN,
+        //         "Dropbox-API-Arg": '{"path": "/test_upload.txt","mode": "add","autorename": true,"mute": false}'
+        //     },
+        //     success: function (file) {
+        //         console.log(file);
+        //     }
+        // })
+        this.up = true;
+
+    }
 
     openModal() {
         this.setState({modalIsOpen: true});
