@@ -7,19 +7,87 @@ import {Meteor} from 'meteor/meteor';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import SweetAlert from 'react-bootstrap-sweetalert';
 
+
 class Job extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            alert: null,
+        };
+        this.warningAlert = (
+            <SweetAlert warning
+                        confirmBtnText="OK!"
+                        confirmBtnBsStyle="danger"
+                        cancelBtnBsStyle="default"
+                        title="You already apply for this job"
+                        onConfirm={() => this.setState({alert: null})}>
+
+            </SweetAlert>
+        );
+        this.succesAlert = (
+            <SweetAlert success
+                        title="You apply succesfully"
+                        onConfirm={() => this.setState({alert: null})}>
+
+            </SweetAlert>
+        );
     }
 
     deleteJob() {
-        console.log("entro");
-        Meteor.call('jobs.remove', this.props.job._id);
-        console.log('job removed');
+        const texto = "The job have been deleted";
+        const hideAlert = () => {
+            this.setState({
+                alert: null
+            });
+        };
+        const succesA = () => {
+            console.log("delete");
+            this.setState({
+                alert: getSuccessAlert
+            });
+
+        };
+        const deleteThisJob = () => {
+            this.setState({
+                alert: null
+            });
+            Meteor.call('jobs.remove', this.props.job._id);
+
+        };
+
+        const getWAlert = (
+
+            <SweetAlert
+                warning
+                showCancel
+                confirmBtnText="Yes!"
+                confirmBtnBsStyle="danger"
+                cancelBtnBsStyle="default"
+                title="Are you sure?"
+                onConfirm={succesA}
+                onCancel={hideAlert}
+            >
+                You would not recover this information!
+            </SweetAlert>
+        );
+        const getSuccessAlert = (
+            <SweetAlert
+                success
+                title={texto}
+                onConfirm={deleteThisJob}>
+            </SweetAlert>
+
+        );
+        this.setState({
+            alert: getWAlert
+        });
+
+
     }
+
+
 
     applyJob() {
         var profile = Meteor.user().profile;
@@ -27,11 +95,12 @@ class Job extends Component {
         profiles = profiles.filter(profile => profile.email === profile.email);
         console.log(profiles);
         if (profiles[0]) {
-            alert("You already apply for this job")
+            this.setState({alert: this.warningAlert});
         }
         else {
             Meteor.call('jobs.update', this.props.job._id, profile);
             console.log(this.props.job);
+            this.setState({alert: this.succesAlert});
         }
 
     }
@@ -74,6 +143,7 @@ class Job extends Component {
                         </div>
 
                     </div>
+                    <div> {this.state.alert}</div>
                     <div className="container col-md-3">
                         <h3>Salary</h3>
                         <h4>{this.props.job.pay + " "}{this.props.job.currency}</h4>
