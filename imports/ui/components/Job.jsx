@@ -94,9 +94,11 @@ class Job extends Component {
         var profiles = this.props.job.profiles;
         profiles = profiles.filter(profile => profile.email === profile.email);
         console.log(profiles);
-        if (profiles[0]) {
-            this.setState({alert: this.warningAlert});
-        }
+        profiles.forEach(profilei =>{
+            if(profile === profilei){
+                this.setState({alert: this.succesAlert});
+            }
+        })
         else {
             Meteor.call('jobs.update', this.props.job._id, profile);
             console.log(this.props.job);

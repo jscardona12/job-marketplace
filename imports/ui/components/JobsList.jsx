@@ -11,7 +11,7 @@ import {Jobs} from '../../api/jobs.js';
 import 'rc-slider/assets/index.css';
 import Slider from 'rc-slider';
 import CountrySelect from "react-country-select";
-
+import Home from "./Home.jsx"
 
 class JobsList extends Component {
 
@@ -19,7 +19,7 @@ class JobsList extends Component {
         super(props);
 
         this.state = {
-            filterCurrency: '' ,
+            filterCurrency: '',
             filterPay: null,
             filterCountry: null,
             filterCity: '',
@@ -39,7 +39,7 @@ class JobsList extends Component {
 
 
     render() {
-        if (true) {
+        if (Meteor.userId()) {
 
 
             let filteredJobs = this.props.jobs;
@@ -107,7 +107,7 @@ class JobsList extends Component {
         else {
             return (
                 <div>
-
+                    <Home/>
                 </div>
             )
         }

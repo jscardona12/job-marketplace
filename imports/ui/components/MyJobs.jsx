@@ -11,6 +11,7 @@ import Modal from 'react-modal';
 import CountrySelect from "react-country-select";
 import 'rc-slider/assets/index.css';
 import Slider from 'rc-slider';
+import Home from './Home.jsx'
 
 const customStyles = {
     content: {
@@ -91,7 +92,7 @@ class MyJobs extends Component {
             }
 
         })
-        if (true) {
+        if (Meteor.userId()) {
             return (
                 <div className="container job-container">
                     <div className="col-md-3">
@@ -204,7 +205,7 @@ class MyJobs extends Component {
         else {
             return (
                 <div>
-
+                    <Home/>
                 </div>
             )
         }
