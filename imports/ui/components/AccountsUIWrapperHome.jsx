@@ -118,7 +118,7 @@ export default class AccountsUIWrapperHome extends Component {
         // Just render a placeholder container that will be filled in
         return (
             <div>
-                <a id="register" onClick={this.openModal.bind(this)}> Register</a>
+                <h2 id="register" onClick={this.openModal.bind(this)}> Register</h2>
                 <div className="col-md-3"></div>
                 <div className="col-md-6">
                     <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal.bind(this)}

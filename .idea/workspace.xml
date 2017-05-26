@@ -4,7 +4,6 @@
     <list default="true" id="78604bc9-bf4c-4b4a-952e-78a1f0017f71" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/main.css" afterPath="$PROJECT_DIR$/client/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/AccountsUIWrapperHome.jsx" afterPath="$PROJECT_DIR$/imports/ui/components/AccountsUIWrapperHome.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/Job.jsx" afterPath="$PROJECT_DIR$/imports/ui/components/Job.jsx" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,21 +27,21 @@
       <file leaf-file-name="AccountsUIWrapperHome.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/ui/components/AccountsUIWrapperHome.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-389">
-              <caret line="119" column="17" lean-forward="true" selection-start-line="119" selection-start-column="17" selection-end-line="119" selection-end-column="17" />
+            <state relative-caret-position="25">
+              <caret line="120" column="19" lean-forward="true" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <marker date="1495750936204" expanded="true" signature="2628:3206" ph="..." />
+                <marker date="1495761737612" expanded="true" signature="2628:3206" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="49" column="30" lean-forward="false" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -92,10 +91,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Job.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Job.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/ui/components/Job.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
+            <state relative-caret-position="-1655">
               <caret line="64" column="35" lean-forward="false" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
               <folding>
                 <element signature="e#42#92#0" expanded="true" />
@@ -194,9 +193,9 @@
         <option value="$PROJECT_DIR$/imports/ui/components/MyJobs.jsx" />
         <option value="$PROJECT_DIR$/imports/ui/components/Profile_Info.jsx" />
         <option value="$PROJECT_DIR$/client/main.html" />
-        <option value="$PROJECT_DIR$/client/main.css" />
-        <option value="$PROJECT_DIR$/imports/ui/components/AccountsUIWrapperHome.jsx" />
         <option value="$PROJECT_DIR$/imports/ui/components/Job.jsx" />
+        <option value="$PROJECT_DIR$/imports/ui/components/AccountsUIWrapperHome.jsx" />
+        <option value="$PROJECT_DIR$/client/main.css" />
       </list>
     </option>
   </component>
@@ -439,12 +438,12 @@
       <workItem from="1495214156733" duration="6149000" />
       <workItem from="1495556432069" duration="346000" />
       <workItem from="1495556824145" duration="30062000" />
-      <workItem from="1495636066585" duration="37966000" />
+      <workItem from="1495636066585" duration="38683000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136924000" />
+    <option name="totallyTimeSpent" value="137641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1102" extended-state="6" />
@@ -568,7 +567,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <marker date="1495750936204" expanded="true" signature="2628:3206" ph="..." />
+            <marker date="1495761737612" expanded="true" signature="2628:3206" ph="..." />
           </folding>
         </state>
       </provider>
@@ -647,7 +646,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <marker date="1495750936204" expanded="true" signature="2628:3206" ph="..." />
+            <marker date="1495761737612" expanded="true" signature="2628:3206" ph="..." />
           </folding>
         </state>
       </provider>
@@ -834,25 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/AccountsUIWrapperHome.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-389">
-          <caret line="119" column="17" lean-forward="true" selection-start-line="119" selection-start-column="17" selection-end-line="119" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <marker date="1495750936204" expanded="true" signature="2628:3206" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/App.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
@@ -885,11 +865,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/Job.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
+        <state relative-caret-position="-1655">
           <caret line="64" column="35" lean-forward="false" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
           <folding>
             <element signature="e#42#92#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/AccountsUIWrapperHome.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="120" column="19" lean-forward="true" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1495761737612" expanded="true" signature="2628:3206" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="49" column="30" lean-forward="false" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

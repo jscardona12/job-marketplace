@@ -45,7 +45,10 @@ button.btn-circle {
     border-radius: 100% !important;
     color: #000E0A;
 }
-
+#register{
+    color:blue;
+    text-decoration: underline;
+}
 #buttonjob{
     background-color:#043A59;
     margin-left:26%;
