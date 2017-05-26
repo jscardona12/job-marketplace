@@ -91,9 +91,11 @@ class Job extends Component {
     applyJob() {
         var profile = Meteor.user().profile;
         var profiles = this.props.job.profiles;
-        profiles = profiles.filter(profile => profile.email === profile.email);
+        profiles = profiles.filter(profilei => profilei.email === profile.email);
         console.log(profiles);
         profiles.forEach(profilei => {
+            console.log("Compare")
+            console.log(profile.email + "--"+profilei.email);
             if (profile.email === profilei.email) {
                 this.setState({alert: this.succesAlert});
                 return;
