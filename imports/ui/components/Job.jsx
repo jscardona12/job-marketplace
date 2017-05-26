@@ -100,10 +100,11 @@ class Job extends Component {
             if (profile.email === profilei.email) {
                 console.log("ENTRO");
                 bool = true;
-                this.setState({alert: this.succesAlert});
+                this.setState({alert: this.warningAlert});
             }
         })
-        if (!bool) {
+        console.log(bool);
+        if (bool === false) {
             Meteor.call('jobs.update', this.props.job._id, profile);
             console.log(this.props.job);
             this.setState({alert: this.succesAlert});
