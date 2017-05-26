@@ -88,22 +88,22 @@ class Job extends Component {
     }
 
 
-
     applyJob() {
         var profile = Meteor.user().profile;
         var profiles = this.props.job.profiles;
         profiles = profiles.filter(profile => profile.email === profile.email);
         console.log(profiles);
-        profiles.forEach(profilei =>{
-            if(profile === profilei){
+        profiles.forEach(profilei => {
+            if (profile === profilei) {
                 this.setState({alert: this.succesAlert});
+                return;
             }
         })
-        else {
-            Meteor.call('jobs.update', this.props.job._id, profile);
-            console.log(this.props.job);
-            this.setState({alert: this.succesAlert});
-        }
+
+        Meteor.call('jobs.update', this.props.job._id, profile);
+        console.log(this.props.job);
+        this.setState({alert: this.succesAlert});
+
 
     }
 
