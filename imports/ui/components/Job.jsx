@@ -94,7 +94,7 @@ class Job extends Component {
         profiles = profiles.filter(profile => profile.email === profile.email);
         console.log(profiles);
         profiles.forEach(profilei => {
-            if (profile === profilei) {
+            if (profile.email === profilei.email) {
                 this.setState({alert: this.succesAlert});
                 return;
             }
