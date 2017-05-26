@@ -91,8 +91,8 @@
       <file leaf-file-name="Job.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/imports/ui/components/Job.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
-              <caret line="105" column="26" lean-forward="false" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
+            <state relative-caret-position="259">
+              <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="45" selection-end-column="34" />
               <folding>
                 <element signature="e#42#92#0" expanded="true" />
               </folding>
@@ -153,6 +153,7 @@
       <find>animales</find>
       <find>'generalJobs</find>
       <find>animal</find>
+      <find>console</find>
     </findStrings>
     <replaceStrings>
       <replace>generalJobs</replace>
@@ -435,12 +436,12 @@
       <workItem from="1495214156733" duration="6149000" />
       <workItem from="1495556432069" duration="346000" />
       <workItem from="1495556824145" duration="30062000" />
-      <workItem from="1495636066585" duration="42906000" />
+      <workItem from="1495636066585" duration="43546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141864000" />
+    <option name="totallyTimeSpent" value="142504000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1102" extended-state="6" />
@@ -879,8 +880,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/Job.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="105" column="26" lean-forward="false" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
+        <state relative-caret-position="259">
+          <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="45" selection-end-column="34" />
           <folding>
             <element signature="e#42#92#0" expanded="true" />
           </folding>
