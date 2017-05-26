@@ -91,6 +91,7 @@ class Job extends Component {
     applyJob() {
         var profile = Meteor.user().profile;
         var profiles = this.props.job.profiles;
+        var bool = false;
         profiles = profiles.filter(profilei => profilei.email === profile.email);
         console.log(profiles);
         profiles.forEach(profilei => {
@@ -98,14 +99,15 @@ class Job extends Component {
             console.log(profile.email === profilei.email);
             if (profile.email === profilei.email) {
                 console.log("ENTRO");
+                bool = true;
                 this.setState({alert: this.succesAlert});
-                return;
             }
         })
-
-        Meteor.call('jobs.update', this.props.job._id, profile);
-        console.log(this.props.job);
-        this.setState({alert: this.succesAlert});
+        if (!bool) {
+            Meteor.call('jobs.update', this.props.job._id, profile);
+            console.log(this.props.job);
+            this.setState({alert: this.succesAlert});
+        }
 
 
     }
