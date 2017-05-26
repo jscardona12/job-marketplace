@@ -95,8 +95,9 @@ class Job extends Component {
         console.log(profiles);
         profiles.forEach(profilei => {
             console.log("Compare")
-            console.log(profile.email + "--"+profilei.email);
+            console.log(profile.email === profilei.email);
             if (profile.email === profilei.email) {
+                console.log("ENTRO");
                 this.setState({alert: this.succesAlert});
                 return;
             }
