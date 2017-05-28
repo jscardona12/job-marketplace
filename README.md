@@ -1,4 +1,4 @@
-##Job Marketplace
+Job Marketplace
 
 To run the project:
 1.  Git clone
